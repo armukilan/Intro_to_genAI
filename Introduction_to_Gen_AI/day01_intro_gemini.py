@@ -18,19 +18,3 @@ response = client.models.generate_content(
 )
 
 print(response.text)
-
-# -------
-
-# Great, you're ready to push! Here's what to do next:
-# First, make sure your notebook is saved in Google Drive. In Colab, go to File → Save a copy in Drive. This saves it to your Drive so the push cell can read it.
-# Then mount Drive by running this cell:
-
-from google.colab import drive
-drive.mount('/content/drive')
-
-# After doing this, work with the saved copy, not with the original one.
-
-# -------
-
-# Then find your notebook's exact path by running:
-!find /content/drive/MyDrive -name "*Introduction*" 2>/dev/null
