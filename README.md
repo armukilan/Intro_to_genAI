@@ -103,6 +103,11 @@ for cell in nb.cells:
         if source.strip():
             code_lines.append(source)
 
+    elif cell.cell_type == "markdown":
+        lines = cell.source.strip().split("\n")
+        commented = "\n".join(f"# {line}" for line in lines)
+        code_lines.append(commented)
+
 # Write clean .py file
 output_path = f"/content/{FILE_NAME}"
 with open(output_path, "w") as f:
