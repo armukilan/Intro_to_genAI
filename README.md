@@ -55,9 +55,9 @@ After doing this, work with the saved copy, not with the original one.
 
 
 
-Next is pushing your code from colab to Github.
+Next is pushing your code from Google Colab to Github.
 When you run your code, you'll run it in different cells.
-Use this comment in each cell, that you feel shouldn't be pushed to repo
+Use this comment in each cell, that you feel shouldn't be pushed to your Github repo
 
 ```python
 # ============================================================
@@ -73,7 +73,7 @@ Use this comment in each cell, that you feel shouldn't be pushed to repo
 # ============================================================
 ```
 Basically what this does is, it says which cells should't be pushed.
-In the next step, we'll mention it, and those will not ber pushed
+In the next step, we'll mention it, and those will not be pushed
 
 ### 📄 Converting .ipynb to .py and Pushing to GitHub
 ```python
