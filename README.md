@@ -128,3 +128,59 @@ print("✅ Pushed to GitHub successfully!")
 ```
 
 > **Note:** Only the clean, relevant `.py` files are pushed to this repo — not the raw notebooks — to keep things organized and readable.
+
+
+### Preserving the original .ipynb format
+
+Now, I have revised my files to save as `.ipynb` fomat. Use this one instead of the above one
+
+```
+# ============================================================
+# PUSH CELL — Do not push this cell
+# ============================================================
+import nbformat
+from google.colab import drive
+
+REPO = "repo_name
+TARGET_FOLDER = "folder_name"
+FILE_NAME = "something.py"  # Change this each day
+
+NOTEBOOK_PATH = "/content/drive/MyDrive/file_name.ipynb"  # Update this
+
+SKIP_MARKERS = ["SETUP CELL", "MOUNT CELL", "PATH CELL", "PUSH CELL", "GITHUB CELL"]
+
+# Read the original notebook
+with open(NOTEBOOK_PATH, "r") as f:
+    nb = nbformat.read(f, as_version=4)
+
+# Filter out unwanted cells
+filtered_cells = []
+for cell in nb.cells:
+    source = cell.source
+    if any(marker in source for marker in SKIP_MARKERS):
+        continue  # Skip these cells entirely
+    filtered_cells.append(cell)
+
+# Build a clean notebook with only the filtered cells
+clean_nb = nbformat.v4.new_notebook()
+clean_nb.cells = filtered_cells
+clean_nb.metadata = nb.metadata  # Preserve kernel/language metadata
+
+# Write the clean notebook
+output_path = f"/content/{FILE_NAME}"
+with open(output_path, "w") as f:
+    nbformat.write(clean_nb, f)
+
+print(f"✅ Clean notebook written to {FILE_NAME}")
+print(f"   Total cells kept: {len(filtered_cells)}")
+
+# Push to GitHub
+!cp {output_path} /content/{REPO}/{TARGET_FOLDER}/
+%cd /content/{REPO}
+!git add {TARGET_FOLDER}/{FILE_NAME}
+!git commit -m "Add {FILE_NAME}"
+!git push
+
+print("✅ Pushed to GitHub successfully!")
+```
+> **Note:** Preserves the `.ipynb` structure - including the cells, formatting and the code.
