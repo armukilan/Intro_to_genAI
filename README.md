@@ -134,7 +134,7 @@ print("✅ Pushed to GitHub successfully!")
 
 Now, I have revised my files to save as `.ipynb` fomat. Use this one instead of the above one
 
-```
+```python
 # ============================================================
 # PUSH CELL — Do not push this cell
 # ============================================================
