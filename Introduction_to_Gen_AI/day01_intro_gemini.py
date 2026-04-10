@@ -5,11 +5,9 @@
 from google import genai
 from google.genai import types
 import os
-from dotenv import load_dotenv
 
-load_dotenv(dotenv_path='../.env')
 
-API_KEY = os.environ["GOOGLE_API_KEY"]
+API_KEY = os.getenv("GOOGLE_API_KEY")
 
 client = genai.Client(api_key=API_KEY)
 response = client.models.generate_content(
