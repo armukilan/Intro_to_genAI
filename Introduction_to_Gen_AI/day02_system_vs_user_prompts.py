@@ -13,10 +13,8 @@
 from google import genai
 from google.genai import types
 import os
-from dotenv import load_dotenv
 
-load_dotenv(dotenv_path='../.env')
-API_KEY = os.environ["GOOGLE_API_KEY"]
+API_KEY = os.getenv("GOOGLE_API_KEY")
 client = genai.Client(api_key=API_KEY)
 
 user_prompt = "Describe Garlic Cheesy bread in one sentence"
@@ -36,11 +34,6 @@ print(response.text)
 from google import genai
 from google.genai import types
 import os
-from dotenv import load_dotenv
-
-# load_dotenv(dotenv_path='../.env')
-# API_KEY = os.environ["GOOGLE_API_KEY"]
-# client = genai.Client(api_key=API_KEY)
 
 user_prompt = "Describe Garlic Cheesy bread in one sentence"
 system_prompt = "You are a 5-star chef running a Michelin star restaurent"
